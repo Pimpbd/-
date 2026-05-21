@@ -254,51 +254,6 @@
     <div>Источники и полезные ссылки: <a href="https://culture.ru" target="_blank" rel="noopener">Культура.РФ</a> <a href="https://constitution.garant.ru" target="_blank" rel="noopener">Конституция РФ</a></div>
   </footer>
 
-  <script>
-    const slides = [
-      { title: 'Русские', img: 'assets/culture-russian.jpg', fact: 'Самая многочисленная культура. Именно русский язык стал «цифровым мостом» между всеми народами РФ.' },
-      { title: 'Татары', img: 'assets/culture-tatar.jpg', fact: 'Второй по численности народ. Татарский язык — самый популярный национальный язык в российском интернете после русского.' },
-      { title: 'Башкиры', img: 'assets/culture-bashkir.jpg', fact: 'Бортничество — древний промысел. Сегодня башкирский мёд — один из узнаваемых культурных брендов России.' },
-      { title: 'Чеченцы', img: 'assets/culture-chechen.jpg', fact: 'Традиционное приветствие «Маршалла» означает мир и благополучие дому. Уважение к старшим закреплено и в обычаях, и в цифровых этических кодексах сообществ.' },
-      { title: 'Якуты (Саха)', img: 'assets/culture-yakut.jpg', fact: 'Народ, который живёт в самом холодном регионе Земли. При этом у якутов — один из самых развитых IT-секторов на Дальнем Востоке.' }
-    ];
-    let currentSlide = 0;
-    const slideImg = document.getElementById('slideImg');
-    const slideNum = document.getElementById('slideNum');
-    const slideTitle = document.getElementById('slideTitle');
-    const slideFact = document.getElementById('slideFact');
-    const dots = document.getElementById('sliderDots');
-    function renderDots(){ dots.innerHTML = slides.map((_,i)=>`<button class="dot ${i===currentSlide?'active':''}" data-slide="${i}" aria-label="Слайд ${i+1}"></button>`).join(''); }
-    function renderSlide(){ const s = slides[currentSlide]; slideImg.src = s.img; slideImg.alt = s.title + ' — культурная карточка'; slideNum.textContent = `Слайд ${currentSlide + 1} / ${slides.length}`; slideTitle.textContent = s.title; slideFact.textContent = s.fact; renderDots(); }
-    document.getElementById('prevSlide').onclick = () => { currentSlide = (currentSlide - 1 + slides.length) % slides.length; renderSlide(); };
-    document.getElementById('nextSlide').onclick = () => { currentSlide = (currentSlide + 1) % slides.length; renderSlide(); };
-    dots.onclick = (e) => { if(e.target.dataset.slide){ currentSlide = Number(e.target.dataset.slide); renderSlide(); } };
-    renderSlide();
-
-    const regions = {
-      kazan: { label: 'Татарстан', title: 'Казань', text: 'Цифровой билингвизм: два языка в госуслугах и публичной коммуникации.' },
-      ufa: { label: 'Башкортостан', title: 'Уфа', text: 'Производство, сильная городская среда и сохранение эпоса «Урал-батыр».' },
-      grozny: { label: 'Чечня', title: 'Грозный', text: 'Современная архитектура и традиционный адаб — этикет уважения в офлайне и онлайне.' },
-      yakutsk: { label: 'Саха', title: 'Якутск', text: 'Полюс холода, сильная идентичность и IT-парк мирового уровня.' },
-      moscow: { label: 'Столица', title: 'Москва', text: 'Место, где встречаются культуры, языки, кухни и цифровые сообщества всей страны.' }
-    };
-    const mapInfo = document.getElementById('mapInfo');
-    document.querySelectorAll('.marker').forEach(btn => btn.addEventListener('click', () => {
-      document.querySelectorAll('.marker').forEach(m => m.classList.remove('active'));
-      btn.classList.add('active');
-      const r = regions[btn.dataset.region];
-      mapInfo.innerHTML = `<div class="slide-number">${r.label}</div><h3>${r.title}</h3><p>${r.text}</p>`;
-    }));
-
-    const quizCard = document.getElementById('quizCard');
-    document.getElementById('startQuiz').onclick = () => quizCard.classList.toggle('open');
-    document.querySelectorAll('.answer').forEach(answer => answer.addEventListener('click', () => {
-      document.querySelectorAll('.answer').forEach(a => a.classList.remove('good','bad'));
-      answer.classList.add(answer.dataset.good ? 'good' : 'bad');
-      document.getElementById('quizResult').textContent = answer.dataset.good ? 'Верно. Русский язык стал общей цифровой средой общения.' : 'Не совсем. Правильный ответ — русский.';
-    }));
-  </script>
-
 <script>
     const slides = [
       { title: 'Русские', img: 'assets/culture-russian.jpg', fact: 'Самая многочисленная культура. Именно русский язык стал «цифровым мостом» между всеми народами РФ.' },
